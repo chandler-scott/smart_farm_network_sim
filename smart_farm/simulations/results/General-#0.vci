@@ -1,0 +1,523 @@
+file 22130 1712889356                                           
+version 3
+run General-0-20240411-22:35:48-351185
+attr configname General
+attr datetime 20240411-22:35:48
+attr datetimef 20240411-223548
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network farm_network
+attr processid 351185
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../inet-4.5/images
+config description "Two hosts communicating wirelessly"
+config network farm_network
+config sim-time-limit 1440min
+config **.sensor[*].mobility.initFromDisplayString false
+config **.sensor[0..3].mobility.initialX 50m
+config **.sensor[0].mobility.initialY 50m
+config **.sensor[1].mobility.initialY 150m
+config **.sensor[2].mobility.initialY 250m
+config **.sensor[3].mobility.initialY 350m
+config **.sensor[4..7].mobility.initialX 150m
+config **.sensor[4].mobility.initialY 50m
+config **.sensor[5].mobility.initialY 150m
+config **.sensor[6].mobility.initialY 250m
+config **.sensor[7].mobility.initialY 350m
+config *.radioMedium.signalAnalogRepresentation "\"unitDisk\""
+config **.ipv4.arp.typename GlobalArp
+config *.sensor[*].numApps 2
+config *.sensor[*].app[0].typename UdpSensorApp
+config *.sensor[*].app[0].destAddresses "\"server\""
+config *.sensor[*].app[0].destPort 5000
+config *.sensor[*].app[0].messageLength 1000B
+config *.sensor[*].app[0].sendInterval exponential(12ms)
+config *.sensor[*].app[0].packetName "\"UDPData\""
+config *.sensor[*].app[1].typename UdpSink
+config *.sensor[*].app[1].localPort 5000
+config *.server.numApps 2
+config *.server.app[0].typename UdpServerSink
+config *.server.app[0].localPort 5000
+config *.server.app[1].typename UdpServerApp
+config *.server.app[1].destAddresses "\"255.255.255.255\""
+config *.server.app[1].destPort 5000
+config *.server.app[1].messageLength 1000B
+config *.server.app[1].sendInterval exponential(12ms)
+config *.server.app[1].packetName "\"UDPData\""
+config **.wlan[0].typename WirelessInterface
+config **.wlan[0].radio.typename UnitDiskRadio
+config **.wlan[0].radio.signalAnalogRepresentation "\"unitDisk\""
+config **.wlan[0].radio.transmitter.communicationRange 500m
+config **.wlan[0].radio.transmitter.analogModel.communicationRange 500m
+config **.wlan[0].radio.receiver.ignoreInterference true
+config **.wlan[0].mac.useAck false
+config **.wlan[0].mac.typename CsmaCaMac
+config **.wlan[0].mac.ackTimeout 300us
+config **.wlan[0].queue.typename DropTailQueue
+config **.wlan[0].queue.packetCapacity -1
+config **.wlan[0].mac.fullDuplex false
+config **.wlan[0].mac.headerLength 23B
+config **.**.bitrate 1Mbps
+
+vector 0 farm_network.server.wlan[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 1 farm_network.server.wlan[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 2 farm_network.server.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 3 farm_network.server.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 4 farm_network.server.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 5 farm_network.sensor[0].wlan[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 6 farm_network.sensor[0].wlan[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 7 farm_network.sensor[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 8 farm_network.sensor[0].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 9 farm_network.sensor[0].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 10 farm_network.sensor[1].wlan[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 11 farm_network.sensor[1].wlan[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 12 farm_network.sensor[1].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 13 farm_network.sensor[1].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 14 farm_network.sensor[1].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 15 farm_network.sensor[2].wlan[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 16 farm_network.sensor[2].wlan[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 17 farm_network.sensor[2].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 18 farm_network.sensor[2].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 19 farm_network.sensor[2].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 20 farm_network.sensor[3].wlan[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 21 farm_network.sensor[3].wlan[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 22 farm_network.sensor[3].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 23 farm_network.sensor[3].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 24 farm_network.sensor[3].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 25 farm_network.sensor[4].wlan[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 26 farm_network.sensor[4].wlan[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 27 farm_network.sensor[4].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 28 farm_network.sensor[4].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 29 farm_network.sensor[4].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 30 farm_network.sensor[5].wlan[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 31 farm_network.sensor[5].wlan[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 32 farm_network.sensor[5].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 33 farm_network.sensor[5].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 34 farm_network.sensor[5].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 35 farm_network.sensor[6].wlan[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 36 farm_network.sensor[6].wlan[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 37 farm_network.sensor[6].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 38 farm_network.sensor[6].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 39 farm_network.sensor[6].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 40 farm_network.sensor[7].wlan[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 41 farm_network.sensor[7].wlan[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 42 farm_network.sensor[7].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 43 farm_network.sensor[7].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 44 farm_network.sensor[7].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 45 farm_network.server.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 46 farm_network.sensor[0].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 47 farm_network.sensor[1].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 48 farm_network.sensor[2].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 49 farm_network.sensor[3].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 50 farm_network.sensor[4].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 51 farm_network.sensor[5].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 52 farm_network.sensor[6].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 53 farm_network.sensor[7].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 54 farm_network.server.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 55 farm_network.sensor[0].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 56 farm_network.sensor[1].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 57 farm_network.sensor[2].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 58 farm_network.sensor[3].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 59 farm_network.sensor[4].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 60 farm_network.sensor[5].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 61 farm_network.sensor[6].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 62 farm_network.sensor[7].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 63 farm_network.sensor[5].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 64 farm_network.sensor[5].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 65 farm_network.sensor[5].wlan[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 66 farm_network.sensor[5].wlan[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 67 farm_network.sensor[5].wlan[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 68 farm_network.sensor[5].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+0	20332 40 0 0 0 0 5 0 0 0 0
+1	20372 40 0 0 0 0 5 0 0 0 0
+2	20412 8 0 0 0 0 1 0 0 0 0
+3	20420 8 0 0 0 0 1 0 0 0 0
+4	20428 8 0 0 0 0 1 0 0 0 0
+5	20436 40 0 0 0 0 5 0 0 0 0
+6	20476 40 0 0 0 0 5 0 0 0 0
+7	20516 8 0 0 0 0 1 0 0 0 0
+8	20524 8 0 0 0 0 1 0 0 0 0
+9	20532 8 0 0 0 0 1 0 0 0 0
+10	20540 45 0 0 0 0 5 0 0 0 0
+11	20585 45 0 0 0 0 5 0 0 0 0
+12	20630 9 0 0 0 0 1 0 0 0 0
+13	20639 9 0 0 0 0 1 0 0 0 0
+14	20648 9 0 0 0 0 1 0 0 0 0
+15	20657 45 0 0 0 0 5 0 0 0 0
+16	20702 45 0 0 0 0 5 0 0 0 0
+17	20747 9 0 0 0 0 1 0 0 0 0
+18	20756 9 0 0 0 0 1 0 0 0 0
+19	20765 9 0 0 0 0 1 0 0 0 0
+20	20774 45 0 0 0 0 5 0 0 0 0
+21	20819 45 0 0 0 0 5 0 0 0 0
+22	20864 9 0 0 0 0 1 0 0 0 0
+23	20873 9 0 0 0 0 1 0 0 0 0
+24	20882 9 0 0 0 0 1 0 0 0 0
+25	20891 45 0 0 0 0 5 0 0 0 0
+26	20936 45 0 0 0 0 5 0 0 0 0
+27	20981 9 0 0 0 0 1 0 0 0 0
+28	20990 9 0 0 0 0 1 0 0 0 0
+29	20999 9 0 0 0 0 1 0 0 0 0
+30	21008 68 0 32 0 0.000700616029 6 0 0 0 0
+31	21076 68 0 32 0 0.000700616029 6 0 0 0 0
+32	21144 9 0 0 0 0 1 0 0 0 0
+33	21153 9 0 0 0 0 1 0 0 0 0
+34	21162 9 0 0 0 0 1 0 0 0 0
+35	21171 45 0 0 0 0 5 0 0 0 0
+36	21216 45 0 0 0 0 5 0 0 0 0
+37	21261 9 0 0 0 0 1 0 0 0 0
+38	21270 9 0 0 0 0 1 0 0 0 0
+39	21279 9 0 0 0 0 1 0 0 0 0
+40	21288 45 0 0 0 0 5 0 0 0 0
+41	21333 45 0 0 0 0 5 0 0 0 0
+42	21378 9 0 0 0 0 1 0 0 0 0
+43	21387 9 0 0 0 0 1 0 0 0 0
+44	21396 9 0 0 0 0 1 0 0 0 0
+45	21405 27 0 0 0 0 3 0 2 2 4
+46	21432 27 0 0 0 0 3 0 2 2 4
+47	21459 27 0 0 0 0 3 0 2 2 4
+48	21486 27 0 0 0 0 3 0 2 2 4
+49	21513 27 0 0 0 0 3 0 2 2 4
+50	21540 27 0 0 0 0 3 0 2 2 4
+51	21567 50 0 33 0 0.001160616029 4 0 3 5 13
+52	21617 27 0 0 0 0 3 0 2 2 4
+53	21644 27 0 0 0 0 3 0 2 2 4
+54	21671 31 0 40 0 0.00116114344 2 1 3 4 10
+55	21702 31 0 38 0 0.00116108776 2 1 3 4 10
+56	21733 32 0 35 0 0.001160949593 2 1 3 4 10
+57	21765 31 0 39 0 0.00116108776 2 1 3 4 10
+58	21796 32 0 42 0 0.001161361901 2 1 3 4 10
+59	21828 32 0 36 0 0.001160949593 2 1 3 4 10
+60	21860 32 0 33 0 0.001160616029 2 0 1 1 1
+61	21892 32 0 37 0 0.001160949593 2 1 3 4 10
+62	21924 32 0 41 0 0.001161283157 2 1 3 4 10
+63	21956 26 28 28 0.000700616029 0.000700616029 1 1000 1000 1000 1000000
+64	21982 26 30 30 0.000700616029 0.000700616029 1 1008 1008 1008 1016064
+65	22008 26 32 32 0.000700616029 0.000700616029 1 8224 8224 8224 67634176
+66	22034 23 32 32 0.000700616029 0.000700616029 1 0 0 0 0
+67	22057 26 32 32 0.000700616029 0.000700616029 1 8224 8224 8224 67634176
+68	22083 46 33 34 0.001160616029 0.001160616029 2 1 2 3 5
+
