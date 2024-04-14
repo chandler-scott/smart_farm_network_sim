@@ -13,10 +13,8 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package farm.applications.sensor;
+import inet.common.packet.Packet;
 
-import inet.applications.udpapp.UdpBasicApp;
-
-simple UdpSensorApp extends UdpBasicApp {
-	@class(smart_farm::UdpSensorApp);
+packet SensorPacket extends inet::Packet{
+    double soilMoistureLevel;
 }

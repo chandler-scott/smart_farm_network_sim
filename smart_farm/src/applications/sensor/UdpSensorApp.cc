@@ -15,3 +15,35 @@
 
 #include "UdpSensorApp.h"
 
+#include "inet/applications/base/ApplicationPacket_m.h"
+#include "inet/common/TimeTag_m.h"
+#include "inet/networklayer/common/FragmentationTag_m.h"
+#include "inet/networklayer/common/L3AddressResolver.h"
+#include "../SensorPacket_m.h"
+#include "../../nodes/WirelessSensorHost.h"
+
+using namespace smart_farm;
+
+Define_Module(UdpSensorApp);
+
+
+void UdpSensorApp::sendPacket(){
+    std::ostringstream str;
+    str << packetName << "-" << numSent;
+    SensorPacket *packet = new SensorPacket(str.str().c_str());
+    if (dontFragment)
+        packet->addTag<FragmentationReq>()->setDontFragment(true);
+    const auto& payload = makeShared<ApplicationPacket>();
+    payload->setChunkLength(B(par("messageLength")));
+    payload->setSequenceNumber(numSent);
+    payload->addTag<CreationTimeTag>()->setCreationTime(simTime());
+    packet->insertAtBack(payload);
+    // soil moisture logic start
+    WirelessSensorHost *sensor = check_and_cast<WirelessSensorHost*>(getParentModule());
+    packet->setSoilMoistureLevel(sensor->getSoilMoisture());
+    // soil moisture logic end
+    L3Address destAddr = chooseDestAddr();
+    emit(packetSentSignal, packet);
+    socket.sendTo(packet, destAddr, destPort);
+    numSent++;
+}

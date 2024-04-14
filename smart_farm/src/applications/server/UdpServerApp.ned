@@ -17,4 +17,6 @@ package farm.applications.server;
 
 import inet.applications.udpapp.UdpBasicApp;
 
-simple UdpServerApp extends UdpBasicApp {}
+simple UdpServerApp extends UdpBasicApp {
+	@class(smart_farm::UdpServerApp);
+}

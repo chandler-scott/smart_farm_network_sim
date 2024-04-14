@@ -26,13 +26,9 @@ import inet.visualizer.contract.IIntegratedVisualizer;
 network farm_network
 {
     parameters:
-        int num_sensors = 8;        
-        
+        int num_sensors = default(8);        
         @display("bgb=500,400;bgi=background/terrain;bgg=100,1,grey95");
         @figure[title](type=label; pos=0,-1; anchor=sw; color=darkblue);
-
-        //@figure[rcvdPkText](type=indicatorText; pos=380,20; anchor=w; font=,18; textFormat="packets received: %g"; initialValue=0);
-        //@statistic[packetReceived](destination=server.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText);
 
     submodules:
         visualizer: <default(firstAvailableOrEmpty("IntegratedCanvasVisualizer"))> like IIntegratedVisualizer if typename != "" {
@@ -44,7 +40,7 @@ network farm_network
         radioMedium: RadioMedium {
             @display("p=430,275");
         }
-        server: <default("WirelessHost")> like INetworkNode {
+        server: <default("WirelessServerHost")> like INetworkNode {
             @display("p=300,200");
             @display("i=device/server");        
         }

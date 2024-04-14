@@ -21,6 +21,8 @@ namespace smart_farm {
  */
 class UdpSensorApp : public UdpBasicApp
 {
+protected:
+    virtual void sendPacket() override;
 
 }; // namespace smart_farm
 

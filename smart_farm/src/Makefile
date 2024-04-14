@@ -39,10 +39,16 @@ OBJS = \
     $O/applications/server/UdpServerApp.o \
     $O/applications/server/UdpServerSink.o \
     $O/nodes/WirelessSensorHost.o \
-    $O/util/SoilMoistureHandler.o
+    $O/nodes/WirelessServerHost.o \
+    $O/util/IrrigationDecisionHandler.o \
+    $O/util/SoilMoistureHandler.o \
+    $O/applications/SensorPacket_m.o \
+    $O/applications/ServerPacket_m.o
 
 # Message files
-MSGFILES =
+MSGFILES = \
+    applications/SensorPacket.msg \
+    applications/ServerPacket.msg
 
 # SM files
 SMFILES =

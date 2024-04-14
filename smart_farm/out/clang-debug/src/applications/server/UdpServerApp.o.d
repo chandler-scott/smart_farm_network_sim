@@ -61,7 +61,37 @@
   /opt/inet-4.5/src/inet/networklayer/contract/IInterfaceTable.h \
   /opt/inet-4.5/src/inet/transportlayer/contract/udp/UdpControlInfo.h \
   /opt/inet-4.5/src/inet/transportlayer/contract/udp/UdpControlInfo_m.h \
-  /opt/inet-4.5/src/inet/networklayer/common/L3Address_m.h
+  /opt/inet-4.5/src/inet/networklayer/common/L3Address_m.h \
+  /opt/inet-4.5/src/inet/applications/base/ApplicationPacket_m.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/Chunk_m.h \
+  /opt/inet-4.5/src/inet/common/Units_m.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/BitCountChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/ByteCountChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/cPacketChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/StreamBufferChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/EncryptedChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/FieldsChunk.h \
+  /opt/inet-4.5/src/inet/common/TimeTag_m.h \
+  /opt/inet-4.5/src/inet/common/TagBase_m.h \
+  /opt/inet-4.5/src/inet/networklayer/common/FragmentationTag_m.h \
+  /opt/inet-4.5/src/inet/networklayer/common/L3AddressResolver.h \
+  /opt/inet-4.5/src/inet/networklayer/contract/IRoutingTable.h \
+  /opt/inet-4.5/src/inet/networklayer/contract/IRoute.h \
+  /opt/inet-4.5/src/inet/networklayer/common/NetworkInterface.h \
+  /opt/inet-4.5/src/inet/common/packet/tag/TagSet.h \
+  /opt/inet-4.5/src/inet/common/Protocol.h \
+  /opt/inet-4.5/src/inet/common/Simsignals.h \
+  /opt/inet-4.5/src/inet/common/Simsignals_m.h \
+  /opt/inet-4.5/src/inet/common/StringFormat.h \
+  /opt/inet-4.5/src/inet/queueing/base/PacketProcessorBase.h \
+  /opt/inet-4.5/src/inet/queueing/contract/IPacketProcessor.h \
+  /opt/inet-4.5/src/inet/queueing/contract/IPassivePacketSink.h \
+  applications/server/../ServerPacket_m.h \
+  /opt/inet-4.5/src/inet/common/packet/Packet_m.h \
+  applications/server/../../nodes/WirelessServerHost.h \
+  applications/server/../../nodes/../util/IrrigationDecisionHandler.h \
+  /opt/inet-4.5/src/inet/node/base/NodeBase.h \
+  applications/server/../../util/IrrigationMessageData.h
 
 applications/server/UdpServerApp.h:
 
@@ -190,3 +220,63 @@ applications/server/UdpServerApp.h:
 /opt/inet-4.5/src/inet/transportlayer/contract/udp/UdpControlInfo_m.h:
 
 /opt/inet-4.5/src/inet/networklayer/common/L3Address_m.h:
+
+/opt/inet-4.5/src/inet/applications/base/ApplicationPacket_m.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/Chunk_m.h:
+
+/opt/inet-4.5/src/inet/common/Units_m.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/BitCountChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/ByteCountChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/cPacketChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/StreamBufferChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/EncryptedChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/FieldsChunk.h:
+
+/opt/inet-4.5/src/inet/common/TimeTag_m.h:
+
+/opt/inet-4.5/src/inet/common/TagBase_m.h:
+
+/opt/inet-4.5/src/inet/networklayer/common/FragmentationTag_m.h:
+
+/opt/inet-4.5/src/inet/networklayer/common/L3AddressResolver.h:
+
+/opt/inet-4.5/src/inet/networklayer/contract/IRoutingTable.h:
+
+/opt/inet-4.5/src/inet/networklayer/contract/IRoute.h:
+
+/opt/inet-4.5/src/inet/networklayer/common/NetworkInterface.h:
+
+/opt/inet-4.5/src/inet/common/packet/tag/TagSet.h:
+
+/opt/inet-4.5/src/inet/common/Protocol.h:
+
+/opt/inet-4.5/src/inet/common/Simsignals.h:
+
+/opt/inet-4.5/src/inet/common/Simsignals_m.h:
+
+/opt/inet-4.5/src/inet/common/StringFormat.h:
+
+/opt/inet-4.5/src/inet/queueing/base/PacketProcessorBase.h:
+
+/opt/inet-4.5/src/inet/queueing/contract/IPacketProcessor.h:
+
+/opt/inet-4.5/src/inet/queueing/contract/IPassivePacketSink.h:
+
+applications/server/../ServerPacket_m.h:
+
+/opt/inet-4.5/src/inet/common/packet/Packet_m.h:
+
+applications/server/../../nodes/WirelessServerHost.h:
+
+applications/server/../../nodes/../util/IrrigationDecisionHandler.h:
+
+/opt/inet-4.5/src/inet/node/base/NodeBase.h:
+
+applications/server/../../util/IrrigationMessageData.h:

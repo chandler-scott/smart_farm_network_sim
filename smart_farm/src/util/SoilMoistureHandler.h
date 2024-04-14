@@ -28,13 +28,13 @@ public:
     SoilMoistureHandler();  // Static method to access the instance
     virtual ~SoilMoistureHandler();             // Destructor
 
-    void TurnIrrigationOn();
-    void TurnIrrigationOff();
-    void UpdateSoilMoisture();
-    double GetSoilMoisture();
+    void updateSoilMoisture();
+    double getSoilMoisture();
+    bool getIrrigationStatus();
+    void setIrrigationStatus(bool value);
 
 private:
-double currentSoilMoisture;                 // Variable to hold the soil moisture level
+    double currentSoilMoisture;                 // Variable to hold the soil moisture level
     bool irrigationOn;                          // Variable to indicate if irrigation is turned on
 };
 

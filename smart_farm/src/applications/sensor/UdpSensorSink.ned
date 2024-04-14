@@ -17,4 +17,6 @@ package farm.applications.sensor;
 
 import inet.applications.udpapp.UdpSink;
 
-simple UdpSensorSink extends UdpSink {}
+simple UdpSensorSink extends UdpSink {
+	@class(smart_farm::UdpSensorSink);
+}

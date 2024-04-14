@@ -19,5 +19,7 @@ import inet.node.inet.WirelessHost;
 
 
 module WirelessSensorHost extends WirelessHost {
-	@class(smart_farm::WirelessSensorHost);
+	parameters:
+		double updateSoilMoistureTimer @unit(s) = default(120.0s);		
+		@class(smart_farm::WirelessSensorHost);	
 }

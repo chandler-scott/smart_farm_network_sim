@@ -13,10 +13,24 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package farm.applications.sensor;
+#include "../nodes/WirelessServerHost.h"
 
-import inet.applications.udpapp.UdpBasicApp;
+using namespace smart_farm;
 
-simple UdpSensorApp extends UdpBasicApp {
-	@class(smart_farm::UdpSensorApp);
+Define_Module(WirelessServerHost);
+
+
+WirelessServerHost::WirelessServerHost() : irrigationDecisionHandler() {}
+
+WirelessServerHost::~WirelessServerHost() {
+}
+
+void WirelessServerHost::initialize(int stage) {
+    if (stage == INITSTAGE_LOCAL) {
+        irrigationDecisionHandler.setIrrigationThreshold(par("irrigationThreshold"));
+    }
+}
+
+void WirelessServerHost::handleMessage(cMessage *msg){
+
 }

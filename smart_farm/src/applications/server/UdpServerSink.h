@@ -21,7 +21,11 @@ namespace smart_farm {
  */
 class UdpServerSink : public UdpSink
 {
+public:
+    UdpServerSink() {}
 
+protected:
+    virtual void processPacket(Packet *msg) override;
 }; // namespace smart_farm
 
 }

@@ -26,17 +26,9 @@ SoilMoistureHandler::~SoilMoistureHandler() {
     // Destructor code here
 }
 
-void SoilMoistureHandler::TurnIrrigationOn() {
-    irrigationOn = true;
-}
-
-void SoilMoistureHandler::TurnIrrigationOff() {
-    irrigationOn = false;
-}
-
-void SoilMoistureHandler::UpdateSoilMoisture() {
+void SoilMoistureHandler::updateSoilMoisture() {
     // Generate a random number between -1.0 and 1.0
-    double randomChange = rand() % 10 + 1;
+    double randomChange = rand() % 5 + 1;
 
     // Update current soil moisture
     currentSoilMoisture += irrigationOn ? (randomChange * 2) : -randomChange;
@@ -45,7 +37,14 @@ void SoilMoistureHandler::UpdateSoilMoisture() {
     currentSoilMoisture = std::max((double)0, currentSoilMoisture);
 }
 
-double SoilMoistureHandler::GetSoilMoisture() {
+double SoilMoistureHandler::getSoilMoisture() {
     return currentSoilMoisture;
 }
 
+bool SoilMoistureHandler::getIrrigationStatus(){
+    return irrigationOn;
+}
+
+void SoilMoistureHandler::setIrrigationStatus(bool value) {
+    irrigationOn = value;
+}

@@ -16,5 +16,8 @@
 package farm.applications.server;
 
 import inet.applications.udpapp.UdpSink;
+import farm.applications.server.UdpServerSink;
 
-simple UdpServerSink extends UdpSink {}
+simple UdpServerSink extends UdpSink {
+	@class(smart_farm::UdpServerSink);
+}

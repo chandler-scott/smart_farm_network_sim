@@ -51,7 +51,32 @@
   /opt/inet-4.5/src/inet/transportlayer/contract/udp/UdpControlInfo.h \
   /opt/inet-4.5/src/inet/transportlayer/contract/udp/UdpControlInfo_m.h \
   /opt/inet-4.5/src/inet/common/INETDefs_m.h \
-  /opt/inet-4.5/src/inet/networklayer/common/L3Address_m.h
+  /opt/inet-4.5/src/inet/networklayer/common/L3Address_m.h \
+  applications/server/UdpServerApp.h \
+  /opt/inet-4.5/src/inet/applications/udpapp/UdpBasicApp.h \
+  /opt/inet-4.5/src/inet/common/clock/ClockUserModuleMixin.h \
+  /opt/inet-4.5/src/inet/clock/contract/IClock.h \
+  /opt/inet-4.5/src/inet/clock/contract/ClockEvent.h \
+  /opt/inet-4.5/src/inet/clock/contract/ClockTime.h \
+  /opt/inet-4.5/src/inet/clock/common/ClockTime.h \
+  /opt/inet-4.5/src/inet/clock/common/ClockEvent.h \
+  /opt/inet-4.5/src/inet/clock/common/ClockEvent_m.h \
+  /opt/inet-4.5/src/inet/clock/contract/ClockTime_m.h \
+  /opt/inet-4.5/src/inet/clock/contract/IClock_m.h \
+  /opt/inet-4.5/src/inet/common/ModuleRefByPar.h \
+  /opt/inet-4.5/src/inet/common/ModuleAccess.h \
+  applications/server/../SensorPacket_m.h \
+  /opt/inet-4.5/src/inet/common/packet/Packet_m.h \
+  /opt/inet-4.5/src/inet/common/Units_m.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/Chunk_m.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/BitCountChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/ByteCountChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/cPacketChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/StreamBufferChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/EncryptedChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/FieldsChunk.h \
+  /opt/inet-4.5/src/inet/networklayer/common/L3AddressTag_m.h \
+  /opt/inet-4.5/src/inet/common/TagBase_m.h
 
 applications/server/UdpServerSink.h:
 
@@ -158,3 +183,53 @@ applications/server/UdpServerSink.h:
 /opt/inet-4.5/src/inet/common/INETDefs_m.h:
 
 /opt/inet-4.5/src/inet/networklayer/common/L3Address_m.h:
+
+applications/server/UdpServerApp.h:
+
+/opt/inet-4.5/src/inet/applications/udpapp/UdpBasicApp.h:
+
+/opt/inet-4.5/src/inet/common/clock/ClockUserModuleMixin.h:
+
+/opt/inet-4.5/src/inet/clock/contract/IClock.h:
+
+/opt/inet-4.5/src/inet/clock/contract/ClockEvent.h:
+
+/opt/inet-4.5/src/inet/clock/contract/ClockTime.h:
+
+/opt/inet-4.5/src/inet/clock/common/ClockTime.h:
+
+/opt/inet-4.5/src/inet/clock/common/ClockEvent.h:
+
+/opt/inet-4.5/src/inet/clock/common/ClockEvent_m.h:
+
+/opt/inet-4.5/src/inet/clock/contract/ClockTime_m.h:
+
+/opt/inet-4.5/src/inet/clock/contract/IClock_m.h:
+
+/opt/inet-4.5/src/inet/common/ModuleRefByPar.h:
+
+/opt/inet-4.5/src/inet/common/ModuleAccess.h:
+
+applications/server/../SensorPacket_m.h:
+
+/opt/inet-4.5/src/inet/common/packet/Packet_m.h:
+
+/opt/inet-4.5/src/inet/common/Units_m.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/Chunk_m.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/BitCountChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/ByteCountChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/cPacketChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/StreamBufferChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/EncryptedChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/FieldsChunk.h:
+
+/opt/inet-4.5/src/inet/networklayer/common/L3AddressTag_m.h:
+
+/opt/inet-4.5/src/inet/common/TagBase_m.h:

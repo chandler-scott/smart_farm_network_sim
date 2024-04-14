@@ -21,6 +21,11 @@ namespace smart_farm {
  */
 class UdpServerApp : public UdpBasicApp
 {
+public:
+    void sendIrrigationResponse(double data, inet::L3Address destAddr);
+protected:
+    virtual void initialize(int stage) override;
+    virtual void handleMessageWhenUp(cMessage *msg) override;
 
 }; // namespace smart_farm
 

@@ -24,11 +24,12 @@ using namespace inet;
 class WirelessSensorHost :  public cSimpleModule
 {
 private:
+    double updateSoilMoistureTimer;
     cMessage *updateMessage;
+    smart_farm::SoilMoistureHandler* soilMoistureHandler;
 
     void updateDisplayString();
 protected:
-    smart_farm::SoilMoistureHandler* soilMoistureHandler;  // Pointer to the SoilMoistureHandler
 
     virtual int numInitStages() const override { return inet::NUM_INIT_STAGES; }
     virtual void initialize(int stage) override;
@@ -38,7 +39,9 @@ public:
     WirelessSensorHost();
     virtual ~WirelessSensorHost();
 
-    smart_farm::SoilMoistureHandler* getSoilMoistureHandler() const { return soilMoistureHandler; }
+    double getSoilMoisture();
+    bool getIrrigationStatus();
+    void setIrrigationStatus(bool turnIrrigationOn);
 };
 
 } // namespace smart_farm

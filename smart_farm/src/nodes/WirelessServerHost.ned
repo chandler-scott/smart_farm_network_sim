@@ -13,10 +13,14 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package farm.applications.sensor;
+package farm.nodes;
 
-import inet.applications.udpapp.UdpBasicApp;
+import inet.node.inet.WirelessHost;
+import farm.applications.server.UdpServerApp;
+import farm.applications.server.UdpServerSink;
 
-simple UdpSensorApp extends UdpBasicApp {
-	@class(smart_farm::UdpSensorApp);
+module WirelessServerHost extends WirelessHost {
+	parameters:
+	    double irrigationThreshold = default(50);
+		@class(smart_farm::WirelessServerHost);
 }

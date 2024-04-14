@@ -14,4 +14,28 @@
 // 
 
 #include "UdpSensorSink.h"
+#include "../ServerPacket_m.h"
+#include "../../nodes/WirelessSensorHost.h"
 
+using namespace smart_farm;
+
+Define_Module(UdpSensorSink);
+
+void UdpSensorSink::processPacket(Packet *pk)
+{
+    ServerPacket* packet = dynamic_cast<ServerPacket*>(pk);
+    if (packet == nullptr) {
+        EV_WARN << "Packet is not a SensorPacket" << endl;
+        return;
+    }
+    EV_DEBUG << "<<<<<<<< Turn Irrigation On: " << packet->getTurnIrrigationOn() << endl;
+    WirelessSensorHost *sensor = check_and_cast<WirelessSensorHost*>(getParentModule());
+
+    bool turnIrrigationOn = packet->getTurnIrrigationOn();
+
+    if (turnIrrigationOn != sensor->getIrrigationStatus()) {
+        sensor->setIrrigationStatus(turnIrrigationOn);
+    }
+
+    inet::UdpSink::processPacket(pk);
+}

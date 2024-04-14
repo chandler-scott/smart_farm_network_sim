@@ -14,4 +14,38 @@
 // 
 
 #include "UdpServerSink.h"
+#include "UdpServerApp.h"
+#include "inet/common/packet/Packet.h"
+
+#include "../SensorPacket_m.h"
+#include "inet/networklayer/common/L3AddressTag_m.h"
+
+
+
+using namespace smart_farm;
+
+Define_Module(UdpServerSink);
+
+
+void UdpServerSink::processPacket(Packet *pk)
+{
+    SensorPacket* packet = dynamic_cast<SensorPacket*>(pk);
+    if (packet == nullptr) {
+        EV_WARN << "Packet is not a SensorPacket" << endl;
+        return;
+    }
+    EV_DEBUG << "<<<<<<<< Soil Moisture: " << packet->getSoilMoistureLevel() << endl;
+
+    // Get source IP address safely
+    inet::L3Address srcAddress;
+    if (auto l3Tag = pk->findTag<inet::L3AddressInd>()) {
+        srcAddress = l3Tag->getSrcAddress();
+    }
+
+    UdpServerApp* serverApp = check_and_cast<UdpServerApp*>(getModuleByPath("^.app[1]"));
+    serverApp->sendIrrigationResponse(packet->getSoilMoistureLevel(), srcAddress);
+
+    UdpSink::processPacket(pk);
+}
+
 

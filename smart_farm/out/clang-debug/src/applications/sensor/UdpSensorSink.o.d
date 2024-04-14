@@ -51,7 +51,20 @@
   /opt/inet-4.5/src/inet/transportlayer/contract/udp/UdpControlInfo.h \
   /opt/inet-4.5/src/inet/transportlayer/contract/udp/UdpControlInfo_m.h \
   /opt/inet-4.5/src/inet/common/INETDefs_m.h \
-  /opt/inet-4.5/src/inet/networklayer/common/L3Address_m.h
+  /opt/inet-4.5/src/inet/networklayer/common/L3Address_m.h \
+  applications/sensor/../ServerPacket_m.h \
+  /opt/inet-4.5/src/inet/common/packet/Packet_m.h \
+  /opt/inet-4.5/src/inet/common/Units_m.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/Chunk_m.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/BitCountChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/ByteCountChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/cPacketChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/StreamBufferChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/EncryptedChunk.h \
+  /opt/inet-4.5/src/inet/common/packet/chunk/FieldsChunk.h \
+  applications/sensor/../../nodes/WirelessSensorHost.h \
+  applications/sensor/../../nodes/../util/SoilMoistureHandler.h \
+  /opt/inet-4.5/src/inet/node/base/NodeBase.h
 
 applications/sensor/UdpSensorSink.h:
 
@@ -158,3 +171,29 @@ applications/sensor/UdpSensorSink.h:
 /opt/inet-4.5/src/inet/common/INETDefs_m.h:
 
 /opt/inet-4.5/src/inet/networklayer/common/L3Address_m.h:
+
+applications/sensor/../ServerPacket_m.h:
+
+/opt/inet-4.5/src/inet/common/packet/Packet_m.h:
+
+/opt/inet-4.5/src/inet/common/Units_m.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/Chunk_m.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/BitCountChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/ByteCountChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/cPacketChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/StreamBufferChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/EncryptedChunk.h:
+
+/opt/inet-4.5/src/inet/common/packet/chunk/FieldsChunk.h:
+
+applications/sensor/../../nodes/WirelessSensorHost.h:
+
+applications/sensor/../../nodes/../util/SoilMoistureHandler.h:
+
+/opt/inet-4.5/src/inet/node/base/NodeBase.h:

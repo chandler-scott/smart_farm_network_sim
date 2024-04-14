@@ -15,6 +15,7 @@
 
 #include "../nodes/WirelessSensorHost.h"
 
+
 using namespace smart_farm;
 
 Define_Module(WirelessSensorHost);
@@ -28,6 +29,8 @@ WirelessSensorHost::~WirelessSensorHost() {
 
 void WirelessSensorHost::initialize(int stage) {
     if (stage == INITSTAGE_LOCAL) {
+        updateSoilMoistureTimer = par("updateSoilMoistureTimer");
+
         soilMoistureHandler = new SoilMoistureHandler();  // Initialize SoilMoistureHandler
         updateDisplayString();
         updateMessage = new cMessage("Update Soil Moisture");
@@ -37,14 +40,32 @@ void WirelessSensorHost::initialize(int stage) {
 
 void WirelessSensorHost::handleMessage(cMessage *msg){
     if (msg->isSelfMessage()){
-        soilMoistureHandler->UpdateSoilMoisture();
+        soilMoistureHandler->updateSoilMoisture();
         updateDisplayString();
-        scheduleAt(simTime() + 1.0, updateMessage);
+        scheduleAt(simTime() + 120.0, updateMessage);
     }
 }
 
 void WirelessSensorHost::updateDisplayString(){
     std::stringstream ss;
-    ss << "Moisture: " << soilMoistureHandler->GetSoilMoisture();
+    ss << "Moisture: " << soilMoistureHandler->getSoilMoisture();
     getDisplayString().setTagArg("t", 0, ss.str().c_str());
+}
+
+double WirelessSensorHost::getSoilMoisture(){
+    return soilMoistureHandler->getSoilMoisture();
+}
+
+bool WirelessSensorHost::getIrrigationStatus(){
+    return soilMoistureHandler->getIrrigationStatus();
+}
+
+void WirelessSensorHost::setIrrigationStatus(bool turnIrrigationOn){
+    soilMoistureHandler->setIrrigationStatus(turnIrrigationOn);
+    if (turnIrrigationOn) {
+        getDisplayString().setTagArg("i", 0, "status/yellow");
+    }
+    else {
+        getDisplayString().setTagArg("i", 0, "status/off");
+   }
 }
