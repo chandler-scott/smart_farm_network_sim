@@ -1,8 +1,16 @@
-all: presentation.pdf
+# Definition of variables
+TARGET = presentation
 
-presentation.pdf: presentation.tex
-	pdflatex presentation.tex
+# Default target
+all: $(TARGET).pdf
 
-clean:
-	rm -f presentation.aux presentation.bbl presentation.blg presentation.log presentation.pdf
+# RUle to generate PDF from LaTeX source
+$(TARGET).pdf: $(TARGET).tex
+	pdflatex $(TARGET).tex
+
+clean:  # Command to remove all files except .tex files and the Makefile
+	find . -type f \
+		\( ! -name '*.tex' \
+		! -name 'Makefile' \) \
+		-exec rm -f {} +
 
