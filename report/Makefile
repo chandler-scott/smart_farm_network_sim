@@ -1,12 +1,15 @@
 # Definition of variables
-TARGET = report
+SOURCES = report.tex
+TARGET = report.pdf
+
+.PHONE: all clean
 
 # Default target
-all: $(TARGET).pdf
+all: $(TARGET)
 
 # RUle to generate PDF from LaTeX source
-$(TARGET).pdf: $(TARGET).tex
-	pdflatex $(TARGET).tex
+$(TARGET): $(SOURCES) 
+	pdflatex $(SOURCES)
 
 clean:  # Command to remove all files except .tex files and the Makefile
 	find . -type f \
