@@ -1,0 +1,36 @@
+\begin{frame}
+    \frametitle{Simulation Setup}
+    \begin{columns}[T] % The "T" option aligns column content at the top
+        \begin{column}{.48\textwidth} % Adjust the width of the column as necessary
+            \textbf{Tools and Components}
+            \begin{itemize}
+                \item \textbf{Network Simulator:} OMNet++
+                \item \textbf{Framework:} INET
+                \item \textbf{Devices:} Eight wireless devices equipped with sensors and actuators
+                \item \textbf{Central Server:} Manages irrigation based on soil data
+            \end{itemize}
+
+            \textbf{Initial Conditions}
+            \begin{itemize}
+                \item Soil moisture initially set at 100\%
+                \item Moisture threshold for irrigation: 50\%
+            \end{itemize}
+        \end{column}
+        \begin{column}{.48\textwidth} % Adjust the width of the column as necessary
+            \textbf{Simulation Details}
+            \begin{itemize}
+                \item 24-hour simulation period
+                \item Updates every 20 seconds
+                \item Data sent to server every 10 minutes
+            \end{itemize}
+
+            \textbf{Network Communication}
+            \begin{itemize}
+                \item \textbf{Transmission:} UDP
+                \item \textbf{Access Control:} 802.11 with CSMA/CD
+                \item \textbf{Configurations:} Acknowledgements (ACKs) adjustable
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+

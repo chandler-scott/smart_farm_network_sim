@@ -1,11 +1,12 @@
-# Project Name: Project Presentation
+# Project Name: Project Presentation 
 # Author: Chandler Scott
 # Description: Smart Agriculture Project Presentation 
 
 
 # Definition of variables
-SOURCES = presentation.tex
-TARGET = presentation.pdf
+NAME = presentation
+SOURCES = $(NAME).tex
+TARGET = $(NAME).pdf
 BUILD_TOOL = pdflatex
 
 .PHONY: all clean
@@ -19,8 +20,4 @@ $(TARGET): $(SOURCES)
 
 # Clean target to remove build artifacts
 clean:  
-	find . -type f \
-		\( ! -name '*.tex' \
- 		! -name 'Makefile' \) \
-		-exec rm -f {} +
-
+	rm -f $(NAME).out $(NAME).aux $(NAME).pdf $(NAME).log $(NAME).nav $(NAME).snm $(NAME).toc
