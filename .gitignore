@@ -1,4 +1,14 @@
 smart_farm/out
 smart_farm/simulations/out
 smart_farm/simulations/results
-
+report/*.out
+report/*.aux
+report/*.pdf
+report/*.log
+presentation/*.out
+presentation/*.aux
+presentation/*.pdf
+presentation/*.log
+presentation/*.snm
+presentation/*.toc
+presentation/*.nav
