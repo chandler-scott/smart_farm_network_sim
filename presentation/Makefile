@@ -1,19 +1,26 @@
+# Project Name: Project Presentation
+# Author: Chandler Scott
+# Description: Smart Agriculture Project Presentation 
+
+
 # Definition of variables
 SOURCES = presentation.tex
 TARGET = presentation.pdf
+BUILD_TOOL = pdflatex
 
-.PHONE: all clean
+.PHONY: all clean
 
 # Default target
 all: $(TARGET)
 
-# RUle to generate PDF from LaTeX source
+# Rule to build the target
 $(TARGET): $(SOURCES) 
-	pdflatex $(SOURCES)
+	$(BUILD_TOOL) $(SOURCES)
 
-clean:  # Command to remove all files except .tex files and the Makefile
+# Clean target to remove build artifacts
+clean:  
 	find . -type f \
 		\( ! -name '*.tex' \
-		! -name 'Makefile' \) \
+ 		! -name 'Makefile' \) \
 		-exec rm -f {} +
 

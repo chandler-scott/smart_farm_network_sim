@@ -1,19 +1,23 @@
-# Definition of variables
-SOURCES = report.tex
-TARGET = report.pdf
+# Project Name: Project Report
+# Author: Chandler Scott
+# Description: Smart Agriculture Project Report
 
-.PHONE: all clean
+
+# Definition of variables
+NAME = report
+SOURCES = $(NAME).tex
+TARGET = $(NAME).pdf
+BUILD_TOOL = pdflatex
+
+.PHONY: all clean
 
 # Default target
 all: $(TARGET)
 
-# RUle to generate PDF from LaTeX source
+# Rule to build the target
 $(TARGET): $(SOURCES) 
-	pdflatex $(SOURCES)
+	$(BUILD_TOOL) $(SOURCES)
 
-clean:  # Command to remove all files except .tex files and the Makefile
-	find . -type f \
-		\( ! -name '*.tex' \
-		! -name 'Makefile' \) \
-		-exec rm -f {} +
-
+# Clean target to remove build artifacts
+clean:  
+	rm -f $(NAME).out $(NAME).aux $(NAME).pdf $(NAME).log
